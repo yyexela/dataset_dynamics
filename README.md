@@ -56,15 +56,3 @@ dataset_dynamics
 - `scripts/AE_fft.py`: Main code for generating images and training AE MLP, please look at the command line options in this file for detailed explanation of inputs and configurations.
 - `src/`: Contains helpers functions for `scripts/AE_fft.py`
 
-## Citing
-
-If you found this library useful in your research, please consider citing.
-
-```
-@misc{torchdiffeq,
-	author={Yermakov, Alexey},
-	title={Dataset Dynamics},
-	year={2025},
-	url={https://github.com/yyexela/dataset_dynamics},
-}
-```
