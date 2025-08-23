@@ -1,0 +1,88 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.25in]{geometry}
+               % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath} % for qed symbol
+\usepackage[all]{xy}
+\usepackage{epstopdf}
+\usepackage{color}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+% these packages make it easy to include figures in the text. 
+\usepackage{float}
+\restylefloat{figure}
+% newcommand
+\newcommand{\ip}[1]{\left\langle #1\right\rangle}
+\newcommand{\norm}[1]{\left| \left| #1 \right| \right|_2}
+
+% Custom Commands
+%\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbf{\Sigma}}
+\newcommand{\LL}{\mathbf{\Lambda}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\dA}{\mathbf{\delta A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\U}{\mathbf{U}}
+
+% For (short)intertext
+\usepackage{mathtools}
+
+% For custom environments
+\usepackage{environ}
+
+% Hyperlink
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdfpagemode=FullScreen,
+}
+
+% Custom Environments
+\NewEnviron{a_eq*}{\begin{equation*} \begin{split} \BODY \end{split} \end{equation*}}
+\NewEnviron{a_eq}{\begin{equation} \begin{split} \BODY \end{split} \end{equation}}
+\NewEnviron{c_eq*}{\begin{center} \begin{equation*} \BODY \end{equation*} \end{center}}
+\NewEnviron{c_eq}{\begin{center} \begin{equation} \BODY \end{equation} \end{center}}
+\NewEnviron{my_mp}{\begin{minipage}{\textwidth} \BODY \end{minipage}}
+
+\begin{document}
+\begin{center}
+{\Large Identified PDEs}
+\end{center}
+\bigskip
+
+\begin{center}
+\begin{tabular}{ |c||p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}| } 
+    \hline
+    & None & Moving Avg & Cubic Spline & Savitzky Golay & Kernel Filter \\ 
+    \hline
+    \hline
+        1 term & NA & NA & NA & NA & NA \\
+        \hline
+        2 term & $-15.41151 uu_{x} + 27.02933 u^2u_{x}$ & NA & $0.75035 uu_{xx} + -1.96325 u^2u_{xx}$ & $ -11.11566 uu_{x} + 17.21850 u^2u_{x}$ & NA \\
+        \hline
+        3 term & $-15.13381 uu_{x} + 32.80010 u^2u_{x} + 0.60793 u^2u_{xx}$ & NA & NA & NA & $-170.82662 uu_{x} + 505.85775 u^2u_{x} + -137.62189 u^2u_{xxxx}$ \\
+        \hline
+        4 term & NA & $0.01978 uu_{xxx} + -0.04251 u^2u_{xxx} + 0.00100 uu_{xxxx} + -0.00243 u^2u_{xxxx}$ & NA & $-10.89777 uu_{x} + 17.93925 u^2u_{x} + -0.01969 uu_{xxx} + -0.00153 u^2u_{xxxx}$ & NA \\
+        \hline
+        5 term & NA & $-0.00017 u_{xxxx} + 0.02076 uu_{xxx} + -0.04358 u^2u_{xxx} + 0.00186 uu_{xxxx} + -0.00336 u^2u_{xxxx}$ & $9.39276 u + -56.27816 u^2 + -13.51867 u^2u_{x} + 0.86100 uu_{xx} + -3.11048 u^2u_{xx}$ & NA & NA \\
+        \hline
+        6 term & $-0.00018 u_{xxxx} + -16.80180 uu_{x} + 38.43710 u^2u_{x} + -0.06598 u^2u_{xxx} + 0.00316 uu_{xxxx} + -0.01230 u^2u_{xxxx}$ & NA & $10.40980 u + -61.89290 u^2 + -0.10884 u_{xx} + -19.83435 u^2u_{x} + 1.64402 uu_{xx} + -4.48042 u^2u_{xx}$ & NA & NA \\
+    \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\end{document}  

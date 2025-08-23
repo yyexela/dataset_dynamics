@@ -1,0 +1,14 @@
+submodules/MNIST
+**/__pycache__/**
+Checkpoints
+Datasets
+fft_images
+fft_images_saved
+Pickles
+notebooks/data
+Logs
+mp4s_all
+*.DS_Store
+build
+*.egg-info
+.python-version

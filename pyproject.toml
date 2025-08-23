@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools >= 64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "latent_spaces"
+version = "0.1"
+dependencies = [
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "numpy",
+    "matplotlib",
+    "pandas",
+    "scikit-learn",
+    "plotly",
+    "notebook",
+    "nbformat",
+    "ipympl",
+    "ipykernel",
+    "seaborn",
+    "scikit-image",
+    "gdown",
+    "kaleido",
+    "h5py",
+]
+requires-python = ">=3.8"
+description = "Latent Spaces, use Python 3.10"
+
+[project.urls]
+Homepage = "https://github.com/yyexela/Research2"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = []
+namespaces = true
+

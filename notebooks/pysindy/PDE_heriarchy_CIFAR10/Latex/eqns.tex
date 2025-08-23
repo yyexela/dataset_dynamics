@@ -1,0 +1,111 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.25in]{geometry}
+               % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath} % for qed symbol
+\usepackage[all]{xy}
+\usepackage{epstopdf}
+\usepackage{color}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+% these packages make it easy to include figures in the text. 
+\usepackage{float}
+\restylefloat{figure}
+% newcommand
+\newcommand{\ip}[1]{\left\langle #1\right\rangle}
+\newcommand{\norm}[1]{\left| \left| #1 \right| \right|_2}
+
+% Custom Commands
+%\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\S}{\mathbf{\Sigma}}
+\newcommand{\LL}{\mathbf{\Lambda}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\I}{\mathbf{I}}
+\newcommand{\dA}{\mathbf{\delta A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\V}{\mathbf{V}}
+\newcommand{\U}{\mathbf{U}}
+
+% For (short)intertext
+\usepackage{mathtools}
+
+% For custom environments
+\usepackage{environ}
+
+% Hyperlink
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdfpagemode=FullScreen,
+}
+
+% Custom Environments
+\NewEnviron{a_eq*}{\begin{equation*} \begin{split} \BODY \end{split} \end{equation*}}
+\NewEnviron{a_eq}{\begin{equation} \begin{split} \BODY \end{split} \end{equation}}
+\NewEnviron{c_eq*}{\begin{center} \begin{equation*} \BODY \end{equation*} \end{center}}
+\NewEnviron{c_eq}{\begin{center} \begin{equation} \BODY \end{equation} \end{center}}
+\NewEnviron{my_mp}{\begin{minipage}{\textwidth} \BODY \end{minipage}}
+
+\begin{document}
+\begin{center}
+{\Large Identified PDEs}
+\end{center}
+\bigskip
+
+\begin{center}
+\begin{tabular}{ |c||p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}| } 
+    \hline
+    & None & Moving Avg & Cubic Spline & Savitzky Golay & Kernel Filter \\ 
+    \hline
+    \hline
+        1 term & NA & NA & NA & NA & NA \\
+        \hline
+        2 terms & $-11.36645 uu_{x} + 16.82523 u^2u_{x}$ & $0.01045 uu_{xxx} + -0.01774 u^2u_{xxx}$ & $-8.22135 uu_{x} + 10.76863 u^2u_{x}$ & NA & $-109.92191 uu_{x} + -91.44342 u^2u_{xxx}$ \\
+        \hline
+        3 terms & NA & $-4.76422 uu_{x} + 0.00816 uu_{xxx} + -0.01595 u^2u_{xxx}$ & $-0.00272 u_{xxx} + -12.22837 uu_{x} + 15.31394 u^2u_{x}$ & $0.23376 u_{xx} + -1.17997 uu_{xx} + 1.44416 u^2u_{xx}$ & $-98.48596 uu_{x} + -135.56134 u^2u_{xxx} + -56.87170 u^2u_{xxxx}$ \\
+        \hline
+        4 terms & NA & $-4.49193 uu_{x} + 0.00667 uu_{xxx} + -0.01749 u^2u_{xxx} + -0.00012 uu_{xxxx}$ & $-0.00395 u_{xxx} + -12.24265 uu_{x} + 15.28004 u^2u_{x} + 0.00364 uu_{xxx}$ & NA & NA \\
+        \hline
+        5 terms & NA & $0.00004 u_{xxxx} + -4.91661 uu_{x} + -0.00372 u^2u_{xxx} + -0.00059 uu_{xxxx} + 0.00074 u^2u_{xxxx}$ & $-0.00525 u_{xxx} + -11.84395 uu_{x} + 15.04165 u^2u_{x} + 0.01230 uu_{xxx} + -0.00976 u^2u_{xxx}$ & NA & $-128.37631 uu_{x} + 69.36572 uu_{xx} + -237.65779 u^2u_{xx} + -280.65436 u^2u_{xxx} + -113.67838 u^2u_{xxxx}$ \\
+        \hline
+        6 terms & NA & $0.00004 u_{xxxx} + -6.04994 uu_{x} + 2.49039 u^2u_{x} + -0.00462 u^2u_{xxx} + -0.00053 uu_{xxxx} + 0.00062 u^2u_{xxxx}$ & NA & NA & $-125.03902 uu_{x} + 57.05769 uu_{xx} + -219.28817 u^2u_{xx} + -271.60494 u^2u_{xxx} + -13.06438 uu_{xxxx} + -94.15883 u^2u_{xxxx}$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+% alpha, beta, gamma, lambda, mu, rho, eta
+
+\begin{center}
+\begin{tabular}{ |c||p{1.8cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}|p{1.8cm}| } 
+    \hline
+    & None & Moving Avg & Cubic Spline & Savitzky Golay & Kernel Filter \\ 
+    \hline
+    \hline
+        1 term & NA & NA & NA & NA & NA \\
+        \hline
+        2 terms & $\alpha uu_{x} + \beta u^2u_{x}$ & $\alpha uu_{xxx} + \beta u^2u_{xxx}$ & $\alpha uu_{x} + \beta u^2u_{x}$ & NA & $\alpha uu_{x} + \beta u^2u_{xxx}$ \\
+        \hline
+        3 terms & NA & $\alpha uu_{x} + \beta uu_{xxx} + \gamma u^2u_{xxx}$ & $\alpha u_{xxx} + \beta uu_{x} + \gamma u^2u_{x}$ & $\alpha u_{xx} + \beta uu_{xx} + \gamma u^2u_{xx}$ & $\alpha uu_{x} + \beta u^2u_{xxx} + \gamma u^2u_{xxxx}$ \\
+        \hline
+        4 terms & NA & $\alpha uu_{x} + \beta uu_{xxx} + \gamma u^2u_{xxx} + \lambda uu_{xxxx}$ & $\alpha u_{xxx} + \beta uu_{x} + \gamma u^2u_{x} + \lambda uu_{xxx}$ & NA & NA \\
+        \hline
+        5 terms & NA & $\alpha u_{xxxx} + \beta uu_{x} + \gamma u^2u_{xxx} + \lambda uu_{xxxx} + \mu u^2u_{xxxx}$ & $\alpha u_{xxx} + \beta uu_{x} + \gamma u^2u_{x} + \lambda uu_{xxx} + \mu u^2u_{xxx}$ & NA & $\alpha uu_{x} + \beta uu_{xx} + \gamma u^2u_{xx} + \lambda u^2u_{xxx} + \mu u^2u_{xxxx}$ \\
+        \hline
+        6 terms & NA & $\alpha u_{xxxx} + \beta uu_{x} + \gamma u^2u_{x} + \lambda u^2u_{xxx} + \mu uu_{xxxx} + \rho u^2u_{xxxx}$ & NA & NA & $\alpha uu_{x} + \beta uu_{xx} + \gamma u^2u_{xx} + \lambda u^2u_{xxx} + \mu uu_{xxxx} + \rho u^2u_{xxxx}$ \\
+    \hline
+\end{tabular}
+\end{center}
+
+\end{document}  
