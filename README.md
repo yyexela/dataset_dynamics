@@ -56,3 +56,14 @@ dataset_dynamics
 - `scripts/AE_fft.py`: Main code for generating images and training AE MLP, please look at the command line options in this file for detailed explanation of inputs and configurations.
 - `src/`: Contains helpers functions for `scripts/AE_fft.py`
 
+## Reproduce Results
+
+If you are a reviewer for the `ml4physicalsciences` workshop, follow the below instructions to reproduce results:
+
+1) Set up the environment
+2) Select a dataset (ex. `MNIST`)
+3) Run the following command: `python AE_fft.py --dataset <dataset> --device cpu --generate_integral_data`
+4) Open the notebook `notebooks/pysindy/PDE_heirarchy_<dataset>/pysindy_<dataset>_pde_og.ipynb`
+5) Run the entire notebook
+
+This process will yield latent space PDEs. You can modify the command line arguments in `AE_fft.py` to produce the wave dynamics as PDFs, PNGs, or MP4s as desired.
